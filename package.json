@@ -1,0 +1,24 @@
+{
+  "name": "awesome-app-2023a",
+  "version": "1.0.0",
+  "description": "Learning Project of platform Express.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "@"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "JS"
+  ],
+  "author": "@JohnMorales",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
