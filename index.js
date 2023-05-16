@@ -7,6 +7,9 @@ import express from "express";
 // Creating an Express instance
 const app = express(); // (req, res) => { CODE }
 
+//  Middleware de parseo de datos del cliente
+app.use(express.urlencoded({ extended: true }));
+
 // Middleware de proposito específico
 app.use("/about", (req, res) => {
   res.send(`
@@ -44,6 +47,29 @@ app.use("/about", (req, res) => {
     </body>
   </html>
   `);
+});
+
+//  GET /add-product
+app.use('/add-product', (req, res, next) => {
+  if (req.method === "POST") return next();
+  //  Sirviendo el formulario
+  res.send(`
+  <form action="/add-product" method="POST">
+  <input type="text" name="title">
+  <input type="text" name="description">
+  <button type="submit">Add Product</button>
+  </form>
+  `);
+});
+
+//  POST /add-product
+app.use('/add-product', (req, res) => {
+  //  Realizando extracción de los datos de la petición
+  for (const prop in req.body) {
+    console.log(`${prop}: ${req.body[prop]}`);
+  }
+  //  Redireccionamiento
+  res.redirect('/');
 });
 
 // Registering our first middleware
