@@ -7,7 +7,8 @@ import path from 'path';
 const router = Router();
 
 router.use((req, res) => {
-    res.status(404).sendFile(path.resolve('views', 'not-found.html'));
+    //res.status(404).sendFile(path.resolve('views', 'not-found.html'));
+    res.render('not-found');
 });
 
 export default router;
