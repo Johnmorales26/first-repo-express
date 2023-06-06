@@ -1,5 +1,7 @@
 // Importando el enrutador de express
 import { Router } from 'express';
+// Importando Action funcion del controlador products
+import { getProducts } from '../controllers/products.controller.js'
 //  Importando el gestor de rutas
 import path from 'path';
 // Importando productos
@@ -9,15 +11,7 @@ import { products } from './admin.route.js';
 const router = Router();
 
 // GET /
-router.get('/', (req, res) => {
-  // Mostrando productos en memoria
-  console.log(products);
-  console.log("📢 Sirviendo la ruta '/'");
-  res.render('shop', {
-    shop: 'active',
-    docTitle: "Shop"
-  });
-});
+router.get('/', getProducts);
 
 // GET /about
 router.get('/about', (req, res) => {
